@@ -35,7 +35,7 @@ class Runnable1 implements Runnable{
     @Override
     public void run() {
         lock1.lock();
-        System.out.println("lock1加锁");
+        System.out.println(Thread.currentThread().getName() + " lock1加锁");
 
         try {
             Thread.sleep(3000);
@@ -44,8 +44,8 @@ class Runnable1 implements Runnable{
         }
 
         lock2.lock();
-        System.out.println("lock2加锁");
-        // code
+        System.out.println(Thread.currentThread().getName() + " lock2加锁");
+        // do work
 
         lock1.unlock();
         lock2.unlock();
@@ -64,7 +64,7 @@ class Runnable2 implements Runnable{
     @Override
     public void run() {
         lock2.lock();
-        System.out.println("lock2加锁");
+        System.out.println(Thread.currentThread().getName() + " lock2加锁");
 
         try {
             Thread.sleep(3000);
@@ -73,8 +73,8 @@ class Runnable2 implements Runnable{
         }
 
         lock1.lock();
-        System.out.println("lock1加锁");
-        // code
+        System.out.println(Thread.currentThread().getName() + " lock1加锁");
+        // do work
 
         lock2.unlock();
         lock1.unlock();
